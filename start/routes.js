@@ -12,5 +12,5 @@ Route.delete('delete/customer/:id', 'CustomerController.delete')
 // Customer Addresses Controller routes
 Route.get('customer-addresses', 'CustomerAddressController.index')
 Route.patch('update/customer-address/:id', 'CustomerAddressController.update')
-Route.delete('delete/customer-address/:id', 'CustomerAddressController.delete')
 Route.post('create/customer-address', 'CustomerAddressController.store')
+Route.delete('delete/customer-address/:id', 'CustomerAddressController.delete')

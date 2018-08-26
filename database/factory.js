@@ -11,12 +11,18 @@
 |
 */
 
-// const Factory = use('Factory')
+const Factory = use('Factory')
 
-/**
-  Factory.blueprint('App/Models/User', (faker) => {
-    return {
-      username: faker.username()
-    }
-  })
-*/
+Factory.blueprint('App/Models/Customer', (faker) => {
+  return {
+    name: faker.name()
+  }
+})
+
+Factory.blueprint('App/Models/CustomerAddress', (faker) => {
+  return {
+    street_address: faker.address(),
+    postal_code: faker.postal(),
+    country: faker.country()
+  }
+})
