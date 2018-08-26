@@ -57,7 +57,7 @@ class CustomerAddressController {
 
     response.json({
       status: 200,
-      message: `${customer.name}'s address successfully deleted`
+      message: 'Address successfully deleted'
     })
   }
 }
