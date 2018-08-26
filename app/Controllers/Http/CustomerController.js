@@ -6,8 +6,7 @@ class CustomerController {
 
   async index ({ response }) {
     const customers = await Customer.all()
-    console.log(customers)
-    // response.send('yeet')
+
     response.send(customers)
   }
 
@@ -28,17 +27,31 @@ class CustomerController {
     })
   }
 
-  // also handle deleting from customer addresses
-  async delete ({ params, response }) {
+  async update ({ params, request, response }) {
     const customer = await Customer.find(params.id)
+    customer.name = request.input('name')
+
+    await customer.save()
+
+    response.json({
+      status: 200,
+      message: `${customer.name} has been updated!`
+    })
+  }
+
+  async delete ({ params, response }) {
+    const { id } = params
+    const customer = await Customer.find(id)
     if (!customer) {
       return response.json({
         status: 400,
         message: 'Customer not found'
       })
     }
-
     await customer.delete()
+    // because sqlite doesn't have foreign keys
+    // we manually delete the address associated with this customer
+    await customer.address().delete()
 
     response.json({
       status: 200,
