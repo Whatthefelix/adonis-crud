@@ -4,17 +4,17 @@ const Customer = use('App/Models/Customer')
 const CustomerAddress = use('App/Models/CustomerAddress')
 
 class CustomerAddressController {
-  async index () {
+  async getCustomerAddresses ({ response }) {
     const customerAddresses = await CustomerAddress.all()
 
     response.send(customerAddresses)
   }
 
-  async store ({ request, response }) {
-    const customer = await Customer.find(request.input('customer_id'))
+  async createCustomerAddress ({ request, response }) {
+    const customer = await Customer.findOrFail(request.input('customer_id'))
     if (!customer) {
       return response.json({
-        status: 400,
+        status: 404,
         message: 'No customer found'
       })
     }
@@ -34,9 +34,9 @@ class CustomerAddressController {
     })
   }
 
-  async update({ params, request, response }) {
+  async updateCustomerAddressById({ params, request, response }) {
     const { id } = params
-    const address = await CustomerAddress.find(id)
+    const address = await CustomerAddress.findOrFail(id)
     address.street_address = request.input('street_address')
     address.postal_code = request.input('postal_code')
     address.country = request.input('country')
@@ -49,9 +49,9 @@ class CustomerAddressController {
     })
   }
 
-  async delete ({ params, response }) {
+  async deleteCustomerAddressById ({ params, response }) {
     const { id } = params
-    const customerAddress = await CustomerAddress.find(id)
+    const customerAddress = await CustomerAddress.findOrFail(id)
 
     await customerAddress.delete()
 

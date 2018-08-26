@@ -15,7 +15,10 @@ const Factory = use('Factory')
 
 Factory.blueprint('App/Models/Customer', (faker) => {
   return {
-    name: faker.name()
+    customer_id: faker.integer(),
+    name: faker.name(),
+    created_at: faker.date({ year: 1983 }),
+    updated_at: faker.date({ year: 1983 })
   }
 })
 
@@ -23,6 +26,8 @@ Factory.blueprint('App/Models/CustomerAddress', (faker) => {
   return {
     street_address: faker.address(),
     postal_code: faker.postal(),
-    country: faker.country()
+    country: faker.country(),
+    created_at: faker.date({ year: 1983 }),
+    updated_at: faker.date({ year: 1983 })
   }
 })

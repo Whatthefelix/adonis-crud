@@ -1,31 +1,33 @@
 'use strict'
 
 const Customer = use('App/Models/Customer')
+// const Customer = require('../../Models/Customer')
+// const yeet = require('../../../')
 
 class CustomerController {
 
-  async index ({ response }) {
+  async getCustomers ({ response }) {
     const customers = await Customer.all()
 
     response.send(customers)
   }
 
-  async getCustomersAndAddresses ({ response }) {
-    const customersAndAddresses = await Customer
+  async getCustomersWithAddresses ({ response }) {
+    const getCustomersWithAddresses = await Customer
       .query()
       .innerJoin('customer_addresses', 'customers.customer_id', 'customer_addresses.customer_id')
 
-    response.send(customersAndAddresses)
+    response.send(getCustomersWithAddresses)
   }
 
-  async getById ({ params, response }) {
+  async getCustomerById ({ params, response }) {
     const { id } = params
-    const customer = await Customer.find(id)
+    const customer = await Customer.findOrFail(id)
 
     response.send(customer)
   }
 
-  async store ({ request, response }) {
+  async createCustomer ({ request, response }) {
     const customer = new Customer()
     customer.name = request.input('name')
     await customer.save()
@@ -36,9 +38,9 @@ class CustomerController {
     })
   }
 
-  async update ({ params, request, response }) {
+  async updateCustomerById ({ params, request, response }) {
     const { id } = params
-    const customer = await Customer.find(id)
+    const customer = await Customer.findOrFail(id)
     customer.name = request.input('name')
 
     await customer.save()
@@ -49,12 +51,12 @@ class CustomerController {
     })
   }
 
-  async delete ({ params, response }) {
+  async deleteCustomerById ({ params, response }) {
     const { id } = params
-    const customer = await Customer.find(id)
+    const customer = await Customer.findOrFail(id)
     if (!customer) {
       return response.json({
-        status: 400,
+        status: 404,
         message: 'Customer not found'
       })
     }
