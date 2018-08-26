@@ -35,7 +35,8 @@ class CustomerAddressController {
   }
 
   async update({ params, request, response }) {
-    const address = await CustomerAddress.find(params.id)
+    const { id } = params
+    const address = await CustomerAddress.find(id)
     address.street_address = request.input('street_address')
     address.postal_code = request.input('postal_code')
     address.country = request.input('country')
@@ -49,7 +50,8 @@ class CustomerAddressController {
   }
 
   async delete ({ params, response }) {
-    const customerAddress = await CustomerAddress.find(params.id)
+    const { id } = params
+    const customerAddress = await CustomerAddress.find(id)
 
     await customerAddress.delete()
 

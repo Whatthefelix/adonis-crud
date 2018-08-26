@@ -10,8 +10,17 @@ class CustomerController {
     response.send(customers)
   }
 
+  async getCustomersAndAddresses ({ response }) {
+    const customersAndAddresses = await Customer
+      .query()
+      .innerJoin('customer_addresses', 'customers.customer_id', 'customer_addresses.customer_id')
+
+    response.send(customersAndAddresses)
+  }
+
   async getById ({ params, response }) {
-    const customer = await Customer.find(params.id)
+    const { id } = params
+    const customer = await Customer.find(id)
 
     response.send(customer)
   }
@@ -28,7 +37,8 @@ class CustomerController {
   }
 
   async update ({ params, request, response }) {
-    const customer = await Customer.find(params.id)
+    const { id } = params
+    const customer = await Customer.find(id)
     customer.name = request.input('name')
 
     await customer.save()

@@ -4,6 +4,7 @@ const Route = use('Route')
 
 // Customer Controller routes
 Route.get('/', 'CustomerController.index')
+Route.get('/customers-with-addresses', 'CustomerController.getCustomersAndAddresses')
 Route.get('customer/:id', 'CustomerController.getById')
 Route.patch('update/customer/:id', 'CustomerController.update')
 Route.post('create/customer', 'CustomerController.store')
