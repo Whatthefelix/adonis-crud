@@ -22,22 +22,16 @@ Run the following command to generate an APP_KEY
 ```adonis key:generate```
 
 
+### Running
+
+Run the following to spin up a local server
+```js
+adonis serve
+```
+
 ### Testing
 
 Run the following command to run the written tests
 ```js
 adonis test
-```
-### Running
-
-Run the following to spin up a local server
-```js
-adonis serve --dev
-```
-
-### Migrations
-
-Run the following command to seed the database
-```js
-adonis seed
 ```
