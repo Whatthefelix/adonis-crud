@@ -18,22 +18,22 @@ Run the following command to generate an APP_KEY
 ```adonis key:generate```
 
 
-### Migrations
-
-Run the following command to run startup migrations.
-
-```js
-adonis migration:run
-```
-
-Run the following command to seed the database
-```js
-adonis seed
-```
-
 ### Testing
 
 Run the following command to run the written tests
 ```js
 adonis test
+```
+### Running
+
+Run the following to spin up a local server
+```js
+adonis serve --dev
+```
+
+### Migrations
+
+Run the following command to seed the database
+```js
+adonis seed
 ```
