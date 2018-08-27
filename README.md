@@ -1,7 +1,9 @@
 ## Setup
 Manually clone the repo and then run 
 
-```jsnpm install```
+```js
+npm install
+```
 
 Install the adonis CLI
 ```js
