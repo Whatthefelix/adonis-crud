@@ -26,3 +26,8 @@ Run the following command to seed the database
 ```js
 adonis seed
 ```
+
+Run the following command to run the written tests
+```js
+adonis test
+```
