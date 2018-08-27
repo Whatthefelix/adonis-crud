@@ -6,11 +6,13 @@ Install the adonis CLI
 npm i -g @adonisjs/cli
 ```
 
-Copy the .env.example file into the .env
+Create the .env file with `touch .env`,
 
-create the .env file with `touch .env`,
+Next, copy the contents of the .env.example file
 
-then you can edit the file with `vim` and paste the contents from .env.example
+into the newly created `.env`
+
+you can edit the file with `vim .env` and paste the contents of .env.example
 
 Run the following command to generate an APP_KEY
 ```adonis key:generate```
