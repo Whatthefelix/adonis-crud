@@ -1,9 +1,6 @@
 'use strict'
 
 const Customer = use('App/Models/Customer')
-// const Customer = require('../../Models/Customer')
-// const yeet = require('../../../')
-
 class CustomerController {
 
   async getCustomers ({ response }) {

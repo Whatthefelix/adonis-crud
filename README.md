@@ -1,18 +1,16 @@
-This is the fullstack boilerplate for AdonisJs, it comes pre-configured with.
-
-1. Bodyparser
-2. Session
-3. Authentication
-4. Web security middleware
-5. CORS
-6. Edge template engine
-7. Lucid ORM
-8. Migrations and seeds
-
 ## Setup
 Manually clone the repo and then run `npm install`.
 
-Database settings are in the env.example because this is just a test project
+Install the adonis CLI
+npm i -g @adonisjs/cli
+
+Copy the .env.example file into the .env
+create the .env file with `touch .env`,
+then you can edit the file with `vim` and paste the contents from .env.example
+
+Run the command `adonis key:generate` to generate an APP_KEY
+
+
 
 ### Migrations
 
